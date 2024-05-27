@@ -62,6 +62,7 @@ export default defineConfig({
       'canvas-confetti',
       'lightweight-charts',
       '@injectivelabs/sdk-ts',
+      '@injectivelabs/wallet-ts',
       '@vueuse/integrations/useQRCode'
     ],
     exclude: ['fsevents']
