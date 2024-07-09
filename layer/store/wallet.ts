@@ -244,7 +244,7 @@ console.log('init', walletStore.wallet)
     onConnect() {
       const modalStore = useSharedModalStore()
       const walletStore = useSharedWalletStore()
-      console.log('onConnect', {walletStrategy})
+      console.log('onConnect', walletStrategy.getWallet())
       modalStore.closeAll()
 
       walletStore.$patch({
@@ -252,7 +252,7 @@ console.log('init', walletStore.wallet)
       })
 
       useEventBus(EventBus.WalletConnected).emit()
-      console.log('end of onConnect', {walletStrategy})
+      console.log('end of onConnect', walletStrategy.getWallet())
     },
 
     async checkIsMetamaskInstalled() {
@@ -303,10 +303,10 @@ console.log('init', walletStore.wallet)
 
       await walletStrategy.disconnect()
       console.log('connectWallet', wallet)
-      console.log('before connect wallet setWallet', {walletStrategy})
+      console.log('before connect wallet setWallet', walletStrategy.getWallet())
       await walletStrategy.setWallet(wallet)
 
-      console.log('after connect wallet setWallet', {walletStrategy})
+      console.log('after connect wallet setWallet', walletStrategy.getWallet())
 
 
       if (options?.privateKey) {
@@ -433,9 +433,9 @@ console.log('init', walletStore.wallet)
       address: string
     }) {
       const walletStore = useSharedWalletStore()
-      console.log('before ledger walletStore.connectWallet', {walletStrategy})
+      console.log('before ledger walletStore.connectWallet', walletStrategy.getWallet())
       await walletStore.connectWallet(wallet)
-      console.log('before ledger walletStore.connectWallet', {walletStrategy})
+      console.log('before ledger walletStore.connectWallet', walletStrategy.getWallet())
 
       const ethereumAddress = getEthereumAddress(address)
       const session = await walletStrategy.getSessionOrConfirm(ethereumAddress)
@@ -449,9 +449,9 @@ console.log('init', walletStore.wallet)
         ),
         session
       })
-      console.log('before ledger walletStore.connectWallet', {walletStrategy})
+      console.log('before ledger walletStore.connectWallet', walletStrategy.getWallet())
       await walletStore.onConnect()
-      console.log('after ledger walletStore.connectWallet', {walletStrategy})
+      console.log('after ledger walletStore.connectWallet', walletStrategy.getWallet())
     },
 
     async connectLedgerCosmos(injectiveAddress: string) {
