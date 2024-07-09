@@ -302,7 +302,11 @@ console.log('init', walletStore.wallet)
 
       // await walletStrategy.disconnect()
       console.log('connectWallet', wallet)
+      console.log('before connect wallet setWallet', {walletStrategy})
       await walletStrategy.setWallet(wallet)
+
+      console.log('after connect wallet setWallet', {walletStrategy})
+
 
       if (options?.privateKey) {
         walletStrategy.setOptions({ privateKey: options.privateKey })
@@ -428,8 +432,9 @@ console.log('init', walletStore.wallet)
       address: string
     }) {
       const walletStore = useSharedWalletStore()
-
+      console.log('before ledger walletStore.connectWallet', {walletStrategy})
       await walletStore.connectWallet(wallet)
+      console.log('before ledger walletStore.connectWallet', {walletStrategy})
 
       const ethereumAddress = getEthereumAddress(address)
       const session = await walletStrategy.getSessionOrConfirm(ethereumAddress)
@@ -443,7 +448,7 @@ console.log('init', walletStore.wallet)
         ),
         session
       })
-
+      console.log('before ledger walletStore.connectWallet', {walletStrategy})
       await walletStore.onConnect()
     },
 
@@ -491,6 +496,7 @@ console.log('init', walletStore.wallet)
     },
 
     async connectMetamask() {
+      console.log('wtf, connecting MM')
       const walletStore = useSharedWalletStore()
 
       await walletStore.connectWallet(Wallet.Metamask)
