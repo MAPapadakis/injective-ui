@@ -244,7 +244,7 @@ console.log('init', walletStore.wallet)
     onConnect() {
       const modalStore = useSharedModalStore()
       const walletStore = useSharedWalletStore()
-
+      console.log('onConnect', {walletStrategy})
       modalStore.closeAll()
 
       walletStore.$patch({
@@ -252,6 +252,7 @@ console.log('init', walletStore.wallet)
       })
 
       useEventBus(EventBus.WalletConnected).emit()
+      console.log('end of onConnect', {walletStrategy})
     },
 
     async checkIsMetamaskInstalled() {
@@ -450,6 +451,7 @@ console.log('init', walletStore.wallet)
       })
       console.log('before ledger walletStore.connectWallet', {walletStrategy})
       await walletStore.onConnect()
+      console.log('after ledger walletStore.connectWallet', {walletStrategy})
     },
 
     async connectLedgerCosmos(injectiveAddress: string) {
