@@ -300,7 +300,7 @@ console.log('init', walletStore.wallet)
     ) {
       const walletStore = useSharedWalletStore()
 
-      await walletStrategy.disconnect()
+      // await walletStrategy.disconnect()
       console.log('connectWallet', wallet)
       await walletStrategy.setWallet(wallet)
 
@@ -323,7 +323,7 @@ console.log('init', walletStore.wallet)
         walletStore.hwAddresses.length === 0 ||
         walletStore.wallet !== wallet
       ) {
-        walletStrategy.disconnect()
+        // walletStrategy.disconnect()
         console.log('getHWAddresses', wallet)
         walletStrategy.setWallet(wallet)
 
