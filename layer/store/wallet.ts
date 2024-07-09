@@ -230,7 +230,7 @@ export const useSharedWalletStore = defineStore('sharedWallet', {
 
     async init() {
       const walletStore = useSharedWalletStore()
-
+console.log('init', walletStore.wallet)
       await walletStrategy.setWallet(walletStore.wallet)
 
       if (walletStore.isAutoSignEnabled) {
@@ -301,6 +301,7 @@ export const useSharedWalletStore = defineStore('sharedWallet', {
       const walletStore = useSharedWalletStore()
 
       await walletStrategy.disconnect()
+      console.log('connectWallet', wallet)
       await walletStrategy.setWallet(wallet)
 
       if (options?.privateKey) {
@@ -323,6 +324,7 @@ export const useSharedWalletStore = defineStore('sharedWallet', {
         walletStore.wallet !== wallet
       ) {
         walletStrategy.disconnect()
+        console.log('getHWAddresses', wallet)
         walletStrategy.setWallet(wallet)
 
         walletStore.$patch({
