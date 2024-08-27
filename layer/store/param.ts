@@ -74,17 +74,17 @@ export const useSharedParamStore = defineStore('sharedParam', {
         baseInflation: inflation
       })
     },
+      {
+    async fetchPool(){
+        const paramsStore = useSharedParamStore()
 
-    async fetchPool() {
-      const paramsStore = useSharedParamStore()
-
-      const pool = await stakingApi.fetchPool()
+        const pool = await stakingApi.fetchPool()
 
       paramsStore.$patch({
-        pool,
-        bondedTokens: pool.bondedTokens
-      })
-    },
+          pool,
+          bondedTokens: pool.bondedTokens
+        })
+      },
 
     async fetchMintParams() {
       const paramsStore = useSharedParamStore()
