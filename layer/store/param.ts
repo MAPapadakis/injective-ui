@@ -74,7 +74,7 @@ export const useSharedParamStore = defineStore('sharedParam', {
         baseInflation: inflation
       })
     },
-
+    {
     async fetchPool() {
       const paramsStore = useSharedParamStore()
 
@@ -96,10 +96,10 @@ export const useSharedParamStore = defineStore('sharedParam', {
         blocksPerYear: mintParams.blocksPerYear
       })
     },
-
+  
     async fetchChainParams() {
       const paramStore = useSharedParamStore()
-
+    }
       const httpClient = new HttpClient('https://chains.cosmos.directory/')
 
       try {
